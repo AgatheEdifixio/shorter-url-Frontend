@@ -1,0 +1,26 @@
+<div class="center-div">
+  <h2>Add a new url </h2>
+
+  <!-- message erreur url valid -->
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-group">
+      <label id="name">Name </label>
+      <input type="text" id="name" class="form-control" name="name" placeholder="Choose a name for your url" ngModel
+        required>
+    </div>
+    <br>
+    <div class="form-group">
+      <label id="url">URL</label>
+      <input type="url" id="url" class="form-control" name="url" placeholder="Paste your Url" ngModel required>
+    </div>
+    <br>
+    <div class="btn-center">
+      <button type="submit" [disabled]="f.invalid" class="btn btn-info ">create url</button>
+    </div>
+  </form>
+  <br>
+  <div class="short-url">
+    <a href="{{shortUrl}}">{{ shortUrl }}</a>
+  </div>
+</div>
+

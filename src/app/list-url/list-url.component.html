@@ -1,0 +1,10 @@
+<div class="title">
+    <br>
+    <h2>MY URLS</h2>
+    <p>Click on the name of your url to display the detail</p>
+
+<div *ngFor="let a of resultfromAPI" (click)="onUrlClicked(a.shortId)">
+    <p>{{a.name}}</p>
+
+</div>
+</div>

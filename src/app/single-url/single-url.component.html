@@ -1,0 +1,10 @@
+<a routerLink="/myurls">back to list</a>
+
+<div class="center-div">
+      <h3>{{ url?.name }}</h3>
+
+      <p>initial URL : <a href="{{ url?.url }}">{{ url?.url }}</a></p>
+      <p>short URL : <a href="{{shortUrl}}">{{ shortUrl }}</a></p>
+
+      <button (click)="delete(url._id)" class="btn btn-danger"> delete </button>
+</div>
