@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, AbstractControl, FormBuilder, FormGroup, Validators  } from '@angular/forms';
 import { RedirectCompComponent } from './redirect-comp/redirect-comp.component';
 import { ListUrlComponent } from './list-url/list-url.component';
 import { NavComponent } from './nav/nav.component';
@@ -29,7 +29,7 @@ import { UrlsService } from './services/urls.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     UrlsService,

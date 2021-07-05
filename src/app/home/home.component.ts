@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormsModule, ReactiveFormsModule, AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UrlsService } from '../services/urls.service';
 import { Url } from '../models/Url.model';
-import { async } from 'rxjs';
+
 
 @Component({
   selector: 'app-home',
@@ -10,43 +10,45 @@ import { async } from 'rxjs';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  form: FormGroup;
+  submitted = false;
 
-  resultfromAPI 
-  public urlAgathe: Url[] = [];
-  public url : Url;
-  a: any;
-  bigUrl: any; 
+  bigUrl: any;
   shortUrl: any;
 
-  constructor(  
+  constructor(
     private urlsService: UrlsService,
-  ) {   }
+    private formBuilder: FormBuilder,
+  ) { }
 
   ngOnInit(): void {
-    //this.displayUrls(); quand arrive sur home 2 cas : url pas d'id => affiche formulaire 
-    //cas 2 id dans url => refaire redirection : request back avec id : recup vrai url 
+
+    this.form = this.formBuilder.group(
+      {
+        name: ['', Validators.required],
+        url: ['', Validators.required],
+      })
 
   }
 
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
 
-  async onSubmit(form: NgForm){
-    console.log("onSubmit() form", form.value);
-    const name = form.value['name'];
-    const url = form.value['url'];
+  async onSubmit() {
+    this.submitted = true;
+
+    if (this.form.invalid) {
+      return;
+    }
+    const name = this.form.value['name'];
+    const url = this.form.value['url'];
     const result = await this.urlsService.createUrl(url, name);
-    console.log("result", result);
-    
-    const shortIdabc = result['shortId']
-    console.log("shortIdabc result['shortId']", shortIdabc);
 
+    const shortId = result['shortId']
     this.bigUrl = result['url'];
-/*     http://${req.headers.host}/${result.shortId}
-    const ae = req.headers.host */
-    this.shortUrl = 'http://localhost:4200/' + shortIdabc;
-    console.log("this.shortUrl]", this.shortUrl);
 
-
-   }
-
-
+    const host = window.location.host;
+    this.shortUrl = 'http://' + host + '/' + shortId;
+  }
 }

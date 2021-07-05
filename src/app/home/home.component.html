@@ -1,26 +1,35 @@
 <div class="center-div">
   <h2>Add a new url </h2>
+  <div class="register-form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" formControlName="name" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
 
-  <!-- message erreur url valid -->
-  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-    <div class="form-group">
-      <label id="name">Name </label>
-      <input type="text" id="name" class="form-control" name="name" placeholder="Choose a name for your url" ngModel
-        required>
-    </div>
-    <br>
-    <div class="form-group">
-      <label id="url">URL</label>
-      <input type="url" id="url" class="form-control" name="url" placeholder="Paste your Url" ngModel required>
-    </div>
-    <br>
-    <div class="btn-center">
-      <button type="submit" [disabled]="f.invalid" class="btn btn-info ">create url</button>
-    </div>
-  </form>
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div>Name is required</div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <label>url</label>
+        <input type="url" formControlName="url" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.url.errors }" />
+        <div *ngIf="submitted && f.url.errors" class="invalid-feedback">
+          <div *ngIf="f.url.errors.required">Url is required</div>
+          <!-- <div *ngIf="f.url.errors.pattern">Please enter valid url</div> -->
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Register</button>
+
+      </div>
+    </form>
+  </div>
   <br>
   <div class="short-url">
     <a href="{{shortUrl}}">{{ shortUrl }}</a>
   </div>
 </div>
-

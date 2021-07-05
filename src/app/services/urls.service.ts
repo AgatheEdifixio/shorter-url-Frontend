@@ -43,6 +43,33 @@ public r = new Url;
 
   }
 
+
+
+  createUrlw(url: any){
+    console.log("------------createURL service-------------- + url", url);
+    const  urlObject = {
+      url: '', 
+      name: '',
+    }; 
+
+ /*    urlObject.url = url;
+    urlObject.name = name; */
+    this.urls = urlObject
+    console.log(" this.urls",  this.urls);
+   /*  console.log("this.urls", this.urls); */
+    return new Promise((resolve, reject) => {
+      this.http.post('http://localhost:3000/api/create', this.urls).subscribe(
+        (response) => {
+          resolve(response);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
+
+  }
+
   //delete url 
 deleteUrl(id: string) {
 /*   const a = id; */
