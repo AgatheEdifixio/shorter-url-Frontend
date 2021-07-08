@@ -18,7 +18,6 @@
           [ngClass]="{ 'is-invalid': submitted && f.url.errors }" />
         <div *ngIf="submitted && f.url.errors" class="invalid-feedback">
           <div *ngIf="f.url.errors.required">Url is required</div>
-          <!-- <div *ngIf="f.url.errors.pattern">Please enter valid url</div> -->
         </div>
       </div>
       <br>

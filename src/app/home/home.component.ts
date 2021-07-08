@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormsModule, ReactiveFormsModule, AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UrlsService } from '../services/urls.service';
-import { Url } from '../models/Url.model';
-
 
 @Component({
   selector: 'app-home',

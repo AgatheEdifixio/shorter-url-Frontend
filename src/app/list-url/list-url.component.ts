@@ -20,7 +20,6 @@ export class ListUrlComponent implements OnInit {
   }
 
   async displayUrls() {
-    console.log("displayUrls()")
     const result = await this.urlsService.getAllUrls();
     this.resultfromAPI = result;
   }

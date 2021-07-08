@@ -8,7 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'myurls', component: ListUrlComponent },
- { path: 'myurl/:id', component: SingleUrlComponent },
+  { path: 'myurl/:id', component: SingleUrlComponent },
   { path: ':id', component: RedirectCompComponent },
 
 
@@ -20,4 +20,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 
- }
+}
